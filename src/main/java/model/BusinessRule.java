@@ -1,6 +1,7 @@
 package model;
 
-public class BusinessRule {
+public abstract class BusinessRule {
+    private int id;
     private String code;
     private String name;
     private String table;
@@ -8,6 +9,15 @@ public class BusinessRule {
     private BusinessRuleType type;
 
     public BusinessRule() {
+        super();
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getCode() {
