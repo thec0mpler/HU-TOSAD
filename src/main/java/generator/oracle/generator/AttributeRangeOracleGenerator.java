@@ -3,7 +3,7 @@ package generator.oracle.generator;
 import generator.DatabaseType;
 import generator.Generator;
 import model.BusinessRule;
-import model.business_rule.AttributeRange;
+import model.BusinessRules.AttributeRange;
 
 public class AttributeRangeOracleGenerator extends Generator {
     public AttributeRangeOracleGenerator() {

@@ -2,9 +2,6 @@ package model.BusinessRules;
 
 import model.BusinessRule;
 
-/**
- * Created by Farshid on 14-1-2017.
- */
 public class AttributeRange extends BusinessRule {
     private String table;
     private String constraintName;
@@ -21,6 +18,7 @@ public class AttributeRange extends BusinessRule {
         this.start = start;
         this.end = end;
     }
+
     @Override
     public String getTable() {
         return table;
