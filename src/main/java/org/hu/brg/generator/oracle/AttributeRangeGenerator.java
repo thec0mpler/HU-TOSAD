@@ -1,12 +1,12 @@
-package generator.oracle.generator;
+package org.hu.brg.generator.oracle;
 
-import generator.DatabaseType;
-import generator.Generator;
-import model.BusinessRule;
-import model.BusinessRules.AttributeRange;
+import org.hu.brg.generator.DatabaseType;
+import org.hu.brg.generator.Generator;
+import org.hu.brg.model.BusinessRule;
+import org.hu.brg.model.business_rule.AttributeRange;
 
-public class AttributeRangeOracleGenerator extends Generator {
-    public AttributeRangeOracleGenerator() {
+public class AttributeRangeGenerator extends Generator {
+    public AttributeRangeGenerator() {
        super(DatabaseType.Oracle);
     }
 

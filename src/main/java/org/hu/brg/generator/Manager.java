@@ -1,6 +1,6 @@
-package generator;
+package org.hu.brg.generator;
 
-import model.BusinessRule;
+import org.hu.brg.model.BusinessRule;
 
 import java.util.ArrayList;
 import java.util.List;

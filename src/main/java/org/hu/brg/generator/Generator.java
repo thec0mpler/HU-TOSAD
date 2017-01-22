@@ -1,6 +1,6 @@
-package generator;
+package org.hu.brg.generator;
 
-import model.BusinessRule;
+import org.hu.brg.model.BusinessRule;
 
 public abstract class Generator {
     private DatabaseType databaseType;

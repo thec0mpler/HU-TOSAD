@@ -1,4 +1,4 @@
-package model;
+package org.hu.brg.model;
 
 public abstract class BusinessRule {
     private int id;

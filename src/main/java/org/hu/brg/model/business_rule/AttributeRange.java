@@ -1,6 +1,6 @@
-package model.BusinessRules;
+package org.hu.brg.model.business_rule;
 
-import model.BusinessRule;
+import org.hu.brg.model.BusinessRule;
 
 public class AttributeRange extends BusinessRule {
     private String table;

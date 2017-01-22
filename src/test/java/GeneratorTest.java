@@ -1,7 +1,7 @@
-import generator.Manager;
-import generator.oracle.OracleManager;
-import model.BusinessRule;
-import model.BusinessRules.AttributeRange;
+import org.hu.brg.generator.Manager;
+import org.hu.brg.generator.oracle.OracleManager;
+import org.hu.brg.model.BusinessRule;
+import org.hu.brg.model.business_rule.AttributeRange;
 
 import java.util.ArrayList;
 import java.util.List;

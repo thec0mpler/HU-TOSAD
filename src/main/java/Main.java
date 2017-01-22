@@ -1,5 +1,5 @@
-import model.BusinessRule;
-import model.BusinessRules.AttributeRange;
+import org.hu.brg.model.BusinessRule;
+import org.hu.brg.model.business_rule.AttributeRange;
 
 public class Main {
     public static void main(String[] args) {
