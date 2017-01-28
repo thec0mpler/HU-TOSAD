@@ -59,4 +59,6 @@ public abstract class BusinessRule {
     public void setType(BusinessRuleType type) {
         this.type = type;
     }
+
+    public abstract String getSQL();
 }

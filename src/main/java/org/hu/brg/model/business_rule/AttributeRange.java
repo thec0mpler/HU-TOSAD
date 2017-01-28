@@ -47,6 +47,21 @@ public class AttributeRange extends BusinessRule {
         this.column = column;
     }
 
+    @Override
+    public String getSQL() {
+        String test = "";
+        if (!negation) {
+            test = "NOT ";
+        } else {
+            test = "";
+        }
+
+        String sql = "ALTER TABLE " + table + "\n" +
+                "ADD CONSTRAINT " + constraintName + "\n" +
+                "CHECK " + column + " " + test + "BETWEEN " + start + " AND " + end;
+        return sql;
+    }
+
     public boolean isNegation() {
         return negation;
     }
@@ -69,20 +84,5 @@ public class AttributeRange extends BusinessRule {
 
     public void setEnd(double end) {
         this.end = end;
-    }
-
-    @Override
-    public String toString() {
-        String test = "";
-        if (!negation) {
-            test = "NOT ";
-        } else {
-            test = "";
-        }
-
-        String s = "alter table " + table + "\n" +
-                "add constraint " + constraintName + "\n" +
-                "check " + column + " " + test + "between " + start + " and " + end;
-        return s;
     }
 }
