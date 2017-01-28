@@ -6,28 +6,21 @@ import org.hu.brg.model.BusinessRule;
  * Created by lap on 27-1-2017.
  */
 public class AttributeCompare extends BusinessRule{
-    private String table;
-    private String constraint;
+    //private String table;
     private String attribute;
+    private String constraint;
     private String operator;
     private double value;
 
-    public AttributeCompare(String table, String constraint, String attribute, String operator, double value) {
-        this.table = table;
-        this.constraint = constraint;
+    public AttributeCompare(int id, String ruleName,
+                            String table, String constraint, String attribute,
+                            String operator, double value) {
+        super(id, ruleName, table);
+        code = "ACMP";
         this.attribute = attribute;
+        this.constraint = constraint;
         this.operator = operator;
         this.value = value;
-    }
-
-    @Override
-    public String getTable() {
-        return table;
-    }
-
-    @Override
-    public void setTable(String table) {
-        this.table = table;
     }
 
     public String getConstraint() {
@@ -38,12 +31,12 @@ public class AttributeCompare extends BusinessRule{
         this.constraint = constraint;
     }
 
-    public String getAttribute() {
-        return attribute;
+    public double getValue() {
+        return value;
     }
 
-    public void setAttribute(String attribute) {
-        this.attribute = attribute;
+    public void setValue(double value) {
+        this.value = value;
     }
 
     public String getOperator() {
@@ -52,14 +45,6 @@ public class AttributeCompare extends BusinessRule{
 
     public void setOperator(String operator) {
         this.operator = operator;
-    }
-
-    public double getValue() {
-        return value;
-    }
-
-    public void setValue(double value) {
-        this.value = value;
     }
 
     @Override
@@ -73,9 +58,9 @@ public class AttributeCompare extends BusinessRule{
             }
         }
 
-        String sql = "ALTER TABLE " + table + "\n" +
+        String sql = "ALTER TABLE " + super.getTable() + "\n" +
                 "ADD CONSTRAINT " + constraint + "\n" +
-                "CHECK " + attribute + " " + operator + " " + value;
+                "CHECK (" + attribute + " " + operator + " " + value + ");";
 
         if (result.equals("")) {
             return "Failed SQL generation.";

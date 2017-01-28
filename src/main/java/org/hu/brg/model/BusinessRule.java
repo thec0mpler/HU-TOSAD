@@ -2,14 +2,16 @@ package org.hu.brg.model;
 
 public abstract class BusinessRule {
     private int id;
-    private String code;
-    private String name;
+    protected String code;
+    private String ruleName;
     private String table;
-    private String column;
+    private String attribute;
     private BusinessRuleType type;
 
-    public BusinessRule() {
-        super();
+    public BusinessRule(int id, String ruleName, String table) {
+        this.id = id;
+        this.ruleName = ruleName;
+        this.table = table;
     }
 
     public int getId() {
@@ -28,12 +30,12 @@ public abstract class BusinessRule {
         this.code = code;
     }
 
-    public String getName() {
-        return name;
+    public String getRuleName() {
+        return ruleName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRuleName(String ruleName) {
+        this.ruleName = ruleName;
     }
 
     public String getTable() {
@@ -44,12 +46,12 @@ public abstract class BusinessRule {
         this.table = table;
     }
 
-    public String getColumn() {
-        return column;
+    public String getAttribute() {
+        return attribute;
     }
 
-    public void setColumn(String column) {
-        this.column = column;
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
     }
 
     public BusinessRuleType getType() {

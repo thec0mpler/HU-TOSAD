@@ -5,15 +5,18 @@ import org.hu.brg.model.BusinessRule;
 public class AttributeRange extends BusinessRule {
     private String table;
     private String constraintName;
-    private String column;
+    private String attribute;
     private boolean negation;
     private double start;
     private double end;
 
-    public AttributeRange(String table, String constraintName, String column, boolean negation, double start, double end) {
+    public AttributeRange(int id, String ruleName, String table, String constraintName,
+                          String attribute, boolean negation, double start, double end) {
+        super(id, ruleName, table);
+        code = "ARNG";
         this.table = table;
         this.constraintName = constraintName;
-        this.column = column;
+        this.attribute = attribute;
         this.negation = negation;
         this.start = start;
         this.end = end;
@@ -38,13 +41,13 @@ public class AttributeRange extends BusinessRule {
     }
 
     @Override
-    public String getColumn() {
-        return column;
+    public String getAttribute() {
+        return attribute;
     }
 
     @Override
-    public void setColumn(String column) {
-        this.column = column;
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
     }
 
     @Override
@@ -58,7 +61,7 @@ public class AttributeRange extends BusinessRule {
 
         String sql = "ALTER TABLE " + table + "\n" +
                 "ADD CONSTRAINT " + constraintName + "\n" +
-                "CHECK " + column + " " + test + "BETWEEN " + start + " AND " + end;
+                "CHECK (" + attribute + " " + test + "BETWEEN " + start + " AND " + end + ");";
         return sql;
     }
 

@@ -8,14 +8,16 @@ import org.hu.brg.model.BusinessRule;
 public class AttributeList extends BusinessRule {
     private String table;
     private String constraint;
-    private String column;
+    private String attribute;
     private boolean negation;
     private String[] list;
 
-    public AttributeList(String table, String constraint, String column, boolean negation, String[] list) {
+    public AttributeList(int id, String ruleName, String table, String constraint, String attribute, boolean negation, String[] list) {
+        super(id, ruleName, table);
+        code = "ALIS";
         this.table = table;
         this.constraint = constraint;
-        this.column = column;
+        this.attribute = attribute;
         this.negation = negation;
         this.list = list;
     }
@@ -39,13 +41,13 @@ public class AttributeList extends BusinessRule {
     }
 
     @Override
-    public String getColumn() {
-        return column;
+    public String getAttribute() {
+        return attribute;
     }
 
     @Override
-    public void setColumn(String column) {
-        this.column = column;
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
     }
 
     public boolean isNegation() {
@@ -66,22 +68,22 @@ public class AttributeList extends BusinessRule {
 
     @Override
     public String getSQL() {
-        String test = "";
+        String result = "";
         if (!negation) {
-            test = "NOT ";
+            result = " NOT";
         } else {
-            test = "";
+            result = "";
         }
 
         String orderedList = "";
         for (String value : list) {
-            orderedList += (value + ", ");
+            orderedList += ("'"+value+"'" + ", ");
         }
         orderedList = orderedList.substring(0, orderedList.length() - 2);
 
         String sql = "ALTER TABLE " + table + "\n" +
                 "ADD CONSTRAINT " + constraint + "\n" +
-                "CHECK " + column + " " + negation + " IN (" + orderedList + ")";
+                "CHECK (" + attribute + result + " IN (" + orderedList + "));";
         return sql;
     }
 }

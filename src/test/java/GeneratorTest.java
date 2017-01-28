@@ -11,7 +11,7 @@ public class GeneratorTest {
         Manager manager = new OracleManager();
 
         List<BusinessRule> businessRuleList = new ArrayList<>();
-        businessRuleList.add(new AttributeRange("products", "constraint_name", "price", false, 12, 15));
+        businessRuleList.add(new AttributeRange(1, "Prijs verglijking","products", "constraint_name", "price", false, 12, 15));
 
         System.out.println(
                 manager.generate(businessRuleList)
