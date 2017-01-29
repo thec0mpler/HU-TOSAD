@@ -15,7 +15,7 @@ public class TupleCompare extends BusinessRule {
     public TupleCompare(int id, String ruleName, String table, String constraint,
                         String firstAttribute, String operator, String secondAttribute) {
         super(id, ruleName, table);
-        code = "ACMP";
+        code = "TCMP";
         this.table = table;
         this.constraint = constraint;
         this.firstAttribute = firstAttribute;
