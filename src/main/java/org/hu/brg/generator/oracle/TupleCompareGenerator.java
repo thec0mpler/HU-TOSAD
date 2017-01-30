@@ -3,24 +3,25 @@ package org.hu.brg.generator.oracle;
 import org.hu.brg.generator.DatabaseType;
 import org.hu.brg.generator.Generator;
 import org.hu.brg.model.BusinessRule;
-import org.hu.brg.model.business_rule.AttributeCompare;
+import org.hu.brg.model.business_rule.TupleCompare;
 
-public class AttributeCompareGenerator extends Generator {
-    public AttributeCompareGenerator() {
+public class TupleCompareGenerator extends Generator {
+    public TupleCompareGenerator() {
         super(DatabaseType.Oracle);
     }
 
     @Override
     public boolean canHandle(BusinessRule businessRule) {
-        return businessRule instanceof AttributeCompare;
+        return businessRule instanceof TupleCompare;
     }
 
     @Override
     public String getOutput(BusinessRule businessRule) {
         if (canHandle(businessRule)) {
-            AttributeCompare rule = (AttributeCompare) businessRule;
 
-            String[] comparisonOperators = {"=", "!=", "^=", "<>", ">", ">=", "<="};
+            TupleCompare rule = (TupleCompare) businessRule;
+
+            String[] comparisonOperators = {"!=", "=", "^=", "<>", ">", ">=", "<="};
 
             String result = "";
             for (String op : comparisonOperators) {
@@ -31,7 +32,7 @@ public class AttributeCompareGenerator extends Generator {
 
             String sql = "ALTER TABLE " + rule.getTable() + "\n" +
                     "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
-                    "CHECK (" + rule.getAttribute() + " " + rule.getOperator() + " " + rule.getValue() + ");";
+                    "CHECK (" + rule.getFirstAttribute() + " " + rule.getOperator() + " " + rule.getSecondAttribute() + ");";
 
             if (result.equals("")) {
                 return "Failed SQL generation.";
@@ -39,6 +40,6 @@ public class AttributeCompareGenerator extends Generator {
                 return sql;
             }
         }
-        return "Is no instance of BusinessRule";
+        return "No instance of BusinessRule";
     }
 }
