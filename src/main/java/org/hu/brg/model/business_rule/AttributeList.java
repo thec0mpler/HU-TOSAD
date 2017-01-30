@@ -65,25 +65,4 @@ public class AttributeList extends BusinessRule {
     public void setList(String[] list) {
         this.list = list;
     }
-
-    @Override
-    public String getSQL() {
-        String result = "";
-        if (!negation) {
-            result = " NOT";
-        } else {
-            result = "";
-        }
-
-        String orderedList = "";
-        for (String value : list) {
-            orderedList += ("'"+value+"'" + ", ");
-        }
-        orderedList = orderedList.substring(0, orderedList.length() - 2);
-
-        String sql = "ALTER TABLE " + table + "\n" +
-                "ADD CONSTRAINT " + constraint + "\n" +
-                "CHECK (" + attribute + result + " IN (" + orderedList + "));";
-        return sql;
-    }
 }

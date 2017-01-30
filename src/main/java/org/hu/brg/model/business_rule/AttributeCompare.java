@@ -46,26 +46,4 @@ public class AttributeCompare extends BusinessRule{
     public void setOperator(String operator) {
         this.operator = operator;
     }
-
-    @Override
-    public String getSQL() {
-        String[] comparisonOperators = {"=", "!=", "^=", "<>", ">", ">=", "<="};
-
-        String result = "";
-        for (String op : comparisonOperators) {
-            if (op.equals(operator)) {
-                result = operator;
-            }
-        }
-
-        String sql = "ALTER TABLE " + super.getTable() + "\n" +
-                "ADD CONSTRAINT " + constraint + "\n" +
-                "CHECK (" + attribute + " " + operator + " " + value + ");";
-
-        if (result.equals("")) {
-            return "Failed SQL generation.";
-        } else {
-            return sql;
-        }
-    }
 }

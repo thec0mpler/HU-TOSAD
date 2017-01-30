@@ -83,21 +83,4 @@ public class AttributeOther extends BusinessRule {
     public void setSecondValue(String secondValue) {
         this.secondValue = secondValue;
     }
-
-    @Override
-    public String getSQL() {
-        String result = "";
-        if (!negation) {
-            result = "NOT ";
-        } else {
-            result = "";
-        }
-
-        String sql = "ALTER TABLE " + super.getTable() + "\n" +
-                "ADD CONSTRAINT " + constraint + "\n" +
-                "CHECK (SUBSTR(" + attribute + ", " +
-                beginPosition + ", " + endPosition + ") " + result + "BETWEEN ('"
-                + firstValue + "' AND '" + secondValue + "');";
-        return sql;
-    }
 }

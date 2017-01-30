@@ -50,21 +50,6 @@ public class AttributeRange extends BusinessRule {
         this.attribute = attribute;
     }
 
-    @Override
-    public String getSQL() {
-        String test = "";
-        if (!negation) {
-            test = "NOT ";
-        } else {
-            test = "";
-        }
-
-        String sql = "ALTER TABLE " + table + "\n" +
-                "ADD CONSTRAINT " + constraintName + "\n" +
-                "CHECK (" + attribute + " " + test + "BETWEEN " + start + " AND " + end + ");";
-        return sql;
-    }
-
     public boolean isNegation() {
         return negation;
     }

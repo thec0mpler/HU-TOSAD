@@ -64,26 +64,4 @@ public class TupleCompare extends BusinessRule {
     public void setOperator(String operator) {
         this.operator = operator;
     }
-
-    @Override
-    public String getSQL() {
-        String[] comparisonOperators = {"!=", "=", "^=", "<>", ">", ">=", "<="};
-
-        String result = "";
-        for (String op : comparisonOperators) {
-            if (op.equals(operator)) {
-                result = operator;
-            }
-        }
-
-        String sql = "ALTER TABLE " + table + "\n" +
-                "ADD CONSTRAINT " + constraint + "\n" +
-                "CHECK (" + firstAttribute + " " + operator + " " + secondAttribute + ");";
-
-        if (result.equals("")) {
-            return "Failed SQL generation.";
-        } else {
-            return sql;
-        }
-    }
 }
