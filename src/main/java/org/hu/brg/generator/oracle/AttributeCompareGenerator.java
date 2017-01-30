@@ -17,28 +17,25 @@ public class AttributeCompareGenerator extends Generator {
 
     @Override
     public String getOutput(BusinessRule businessRule) {
-        if (canHandle(businessRule)) {
-            AttributeCompare rule = (AttributeCompare) businessRule;
+        AttributeCompare rule = (AttributeCompare) businessRule;
 
-            String[] comparisonOperators = {"=", "!=", "^=", "<>", ">", ">=", "<="};
+        String[] comparisonOperators = {"=", "!=", "^=", "<>", ">", ">=", "<="};
 
-            String result = "";
-            for (String op : comparisonOperators) {
-                if (op.equals(rule.getOperator())) {
-                    result = rule.getOperator();
-                }
-            }
-
-            String sql = "ALTER TABLE " + rule.getTable() + "\n" +
-                    "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
-                    "CHECK (" + rule.getAttribute() + " " + rule.getOperator() + " " + rule.getValue() + ");";
-
-            if (result.equals("")) {
-                return "Failed SQL generation.";
-            } else {
-                return sql;
+        String result = "";
+        for (String op : comparisonOperators) {
+            if (op.equals(rule.getOperator())) {
+                result = rule.getOperator();
             }
         }
-        return "Is no instance of BusinessRule";
+
+        String sql = "ALTER TABLE " + rule.getTable() + "\n" +
+                "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
+                "CHECK (" + rule.getAttribute() + " " + rule.getOperator() + " " + rule.getValue() + ");";
+
+        if (result.equals("")) {
+            return "Failed SQL generation.";
+        } else {
+            return sql;
+        }
     }
 }

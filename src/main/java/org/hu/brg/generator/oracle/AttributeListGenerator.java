@@ -17,28 +17,24 @@ public class AttributeListGenerator extends Generator {
 
     @Override
     public String getOutput(BusinessRule businessRule) {
-        if (canHandle(businessRule)) {
+        AttributeList rule = (AttributeList) businessRule;
 
-            AttributeList rule = (AttributeList) businessRule;
-
-            String result = "";
-            if (!rule.isNegation()) {
-                result = " NOT";
-            } else {
-                result = "";
-            }
-
-            String orderedList = "";
-            for (String value : rule.getList()) {
-                orderedList += ("'"+value+"'" + ", ");
-            }
-            orderedList = orderedList.substring(0, orderedList.length() - 2);
-
-            String sql = "ALTER TABLE " + rule.getTable() + "\n" +
-                    "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
-                    "CHECK (" + rule.getAttribute() + result + " IN (" + orderedList + "));";
-            return sql;
+        String result = "";
+        if (!rule.isNegation()) {
+            result = " NOT";
+        } else {
+            result = "";
         }
-        return "Is no instance of BusinessRule";
+
+        String orderedList = "";
+        for (String value : rule.getList()) {
+            orderedList += ("'"+value+"'" + ", ");
+        }
+        orderedList = orderedList.substring(0, orderedList.length() - 2);
+
+        String sql = "ALTER TABLE " + rule.getTable() + "\n" +
+                "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
+                "CHECK (" + rule.getAttribute() + result + " IN (" + orderedList + "));";
+        return sql;
     }
 }

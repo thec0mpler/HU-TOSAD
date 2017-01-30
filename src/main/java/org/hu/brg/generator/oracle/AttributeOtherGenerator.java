@@ -17,24 +17,20 @@ public class AttributeOtherGenerator extends Generator {
 
     @Override
     public String getOutput(BusinessRule businessRule) {
-        if (canHandle(businessRule)) {
+        AttributeOther rule = (AttributeOther) businessRule;
 
-            AttributeOther rule = (AttributeOther) businessRule;
-
-            String result = "";
-            if (!rule.isNegation()) {
-                result = "NOT ";
-            } else {
-                result = "";
-            }
-
-            String sql = "ALTER TABLE " + rule.getTable() + "\n" +
-                    "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
-                    "CHECK (SUBSTR(" + rule.getAttribute() + ", " +
-                    rule.getBeginPosition() + ", " + rule.getEndPosition() + ") " + result + "BETWEEN ('"
-                    + rule.getFirstValue() + "' AND '" + rule.getSecondValue() + "');";
-            return sql;
+        String result = "";
+        if (!rule.isNegation()) {
+            result = "NOT ";
+        } else {
+            result = "";
         }
-        return "Is no instance of BusinessRule";
+
+        String sql = "ALTER TABLE " + rule.getTable() + "\n" +
+                "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
+                "CHECK (SUBSTR(" + rule.getAttribute() + ", " +
+                rule.getBeginPosition() + ", " + rule.getEndPosition() + ") " + result + "BETWEEN ('"
+                + rule.getFirstValue() + "' AND '" + rule.getSecondValue() + "');";
+        return sql;
     }
 }

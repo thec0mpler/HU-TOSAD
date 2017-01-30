@@ -13,6 +13,9 @@ public abstract class Generator {
         return databaseType;
     }
 
+
+
+
     public abstract boolean canHandle(BusinessRule businessRule);
 
     public abstract String getOutput(BusinessRule businessRule);

@@ -13,7 +13,6 @@ public abstract class Manager {
         this.setDatabaseType(databaseType);
         this.addGenerators();
     }
-
     protected abstract void addGenerators();
 
     private DatabaseType getDatabaseType() {
@@ -29,7 +28,6 @@ public abstract class Manager {
             this.generators.add(generator);
         }
     }
-
     public String generate(List<BusinessRule> businessRules) throws Exception {
         String output = "";
 
@@ -40,7 +38,6 @@ public abstract class Manager {
                 output += generator.getOutput(businessRule);
             }
         }
-
         return output;
     }
 

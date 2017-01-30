@@ -17,29 +17,25 @@ public class TupleCompareGenerator extends Generator {
 
     @Override
     public String getOutput(BusinessRule businessRule) {
-        if (canHandle(businessRule)) {
+        TupleCompare rule = (TupleCompare) businessRule;
 
-            TupleCompare rule = (TupleCompare) businessRule;
+        String[] comparisonOperators = {"!=", "=", "^=", "<>", ">", ">=", "<="};
 
-            String[] comparisonOperators = {"!=", "=", "^=", "<>", ">", ">=", "<="};
-
-            String result = "";
-            for (String op : comparisonOperators) {
-                if (op.equals(rule.getOperator())) {
-                    result = rule.getOperator();
-                }
-            }
-
-            String sql = "ALTER TABLE " + rule.getTable() + "\n" +
-                    "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
-                    "CHECK (" + rule.getFirstAttribute() + " " + rule.getOperator() + " " + rule.getSecondAttribute() + ");";
-
-            if (result.equals("")) {
-                return "Failed SQL generation.";
-            } else {
-                return sql;
+        String result = "";
+        for (String op : comparisonOperators) {
+            if (op.equals(rule.getOperator())) {
+                result = rule.getOperator();
             }
         }
-        return "No instance of BusinessRule";
+
+        String sql = "ALTER TABLE " + rule.getTable() + "\n" +
+                "ADD CONSTRAINT " + rule.getConstraint() + "\n" +
+                "CHECK (" + rule.getFirstAttribute() + " " + rule.getOperator() + " " + rule.getSecondAttribute() + ");";
+
+        if (result.equals("")) {
+            return "Failed SQL generation.";
+        } else {
+            return sql;
+        }
     }
 }

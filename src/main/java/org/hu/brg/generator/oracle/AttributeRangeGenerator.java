@@ -17,22 +17,18 @@ public class AttributeRangeGenerator extends Generator {
 
     @Override
     public String getOutput(BusinessRule businessRule) {
-        if (canHandle(businessRule)) {
+        AttributeRange rule = (AttributeRange) businessRule;
 
-            AttributeRange rule = (AttributeRange) businessRule;
-
-            String test = "";
-            if (!rule.isNegation()) {
-                test = "NOT ";
-            } else {
-                test = "";
-            }
-
-            String sql = "ALTER TABLE " + rule.getTable() + "\n" +
-                    "ADD CONSTRAINT " + rule.getConstraintName() + "\n" +
-                    "CHECK (" + rule.getAttribute() + " " + test + "BETWEEN " + rule.getStart() + " AND " + rule.getEnd() + ");";
-            return sql;
+        String test = "";
+        if (!rule.isNegation()) {
+            test = "NOT ";
+        } else {
+            test = "";
         }
-        return "Is no instance of BusinessRule";
+
+        String sql = "ALTER TABLE " + rule.getTable() + "\n" +
+                "ADD CONSTRAINT " + rule.getConstraintName() + "\n" +
+                "CHECK (" + rule.getAttribute() + " " + test + "BETWEEN " + rule.getStart() + " AND " + rule.getEnd() + ");";
+        return sql;
     }
 }
