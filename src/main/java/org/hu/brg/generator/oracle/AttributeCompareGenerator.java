@@ -7,6 +7,7 @@ import org.hu.brg.model.business_rule.AttributeCompare;
 
 public class AttributeCompareGenerator extends Generator {
     public AttributeCompareGenerator() {
+
         super(DatabaseType.Oracle);
     }
 
