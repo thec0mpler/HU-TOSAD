@@ -33,7 +33,9 @@ public class AttributeCompareGenerator extends Generator {
                 "CHECK (" + rule.getAttribute() + " " + rule.getOperator() + " " + rule.getValue() + ");";
 
         if (result.equals("")) {
-            return "Failed SQL generation.";
+            return "/*** \n" +
+                    "Failed SQL generation on " + rule.getCode() + " with the following ID: " + rule.getId() + ".\n" +
+                    "***/";
         } else {
             return sql;
         }
