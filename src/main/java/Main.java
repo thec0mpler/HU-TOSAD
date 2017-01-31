@@ -11,19 +11,19 @@ public class Main {
         BusinessRule rule5 = new TupleCompare(5, "Check prijs", "Producten", "constr_test", "prijs", ">", "andere_attribuut");
 
 
-        System.out.println(rule1.getId() + " " + rule1.getCode() + " " + rule1.getRuleName());
-        System.out.println(rule1.getSQL());
-        System.out.println();
-        System.out.println(rule2.getId() + " " + rule2.getCode() + " " + rule2.getRuleName());
-        System.out.println(rule2.getSQL());
-        System.out.println();
-        System.out.println(rule3.getId() + " " + rule3.getCode() + " " + rule3.getRuleName());
-        System.out.println(rule3.getSQL());
-        System.out.println();
-        System.out.println(rule4.getId() + " " + rule4.getCode() + " " + rule4.getRuleName());
-        System.out.println(rule4.getSQL());
-        System.out.println();
-        System.out.println(rule5.getId() + " " + rule5.getCode() + " " + rule5.getRuleName());
-        System.out.println(rule5.getSQL());
+//        System.out.println(rule1.getId() + " " + rule1.getCode() + " " + rule1.getRuleName());
+//        System.out.println(rule1.getSQL());
+//        System.out.println();
+//        System.out.println(rule2.getId() + " " + rule2.getCode() + " " + rule2.getRuleName());
+//        System.out.println(rule2.getSQL());
+//        System.out.println();
+//        System.out.println(rule3.getId() + " " + rule3.getCode() + " " + rule3.getRuleName());
+//        System.out.println(rule3.getSQL());
+//        System.out.println();
+//        System.out.println(rule4.getId() + " " + rule4.getCode() + " " + rule4.getRuleName());
+//        System.out.println(rule4.getSQL());
+//        System.out.println();
+//        System.out.println(rule5.getId() + " " + rule5.getCode() + " " + rule5.getRuleName());
+//        System.out.println(rule5.getSQL());
     }
 }

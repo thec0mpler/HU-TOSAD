@@ -33,7 +33,9 @@ public class TupleCompareGenerator extends Generator {
                 "CHECK (" + rule.getFirstAttribute() + " " + rule.getOperator() + " " + rule.getSecondAttribute() + ");";
 
         if (result.equals("")) {
-            return "Failed SQL generation.";
+            return "/*** \n" +
+                    "Failed SQL generation on " + rule.getCode() + " with the following ID: " + rule.getId() + ".\n" +
+                    "***/";
         } else {
             return sql;
         }
